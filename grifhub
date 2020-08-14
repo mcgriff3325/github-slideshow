@@ -1,0 +1,160 @@
+steps:
+- uses: actions/checkout@v2
+
+- run: mkdir -p path/to/artifact
+
+- run: echo hello > path/to/artifact/world.txt
+
+- uses: actions/upload-artifact@v2
+  with:
+    name: my-artifact
+    path: path/**/[abc]rtifac?/*
+    on:
+  push:
+    branches:
+    - main
+    - release/*
+  on:  
+  pull_request:
+    branches:
+    - main
+  schedule:
+  - cron: "0 2 * * 1-5"
+  
+jobs:
+  my_job:
+    name: deploy to staging
+    runs-on: ubuntu-18.04, ubuntu-16.04, windows-latest, macos-latest
+
+name: Install Dependencies      
+defaults:
+    
+    node-version: '10.x'  
+  
+    name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node_version: ['8', '10', '12']
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node_version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node_version }}
+
+    - name: npm install, build and test 
+      
+      run: npm publish 
+     
+   
+     
+      matrix:
+          node-version: [8.x, 10.x, 12.x, 13.x]
+    
+    
+      
+          run: echo ${{ matrix.node-version }} > my_file.txt
+      
+          uses: 'actions/upload-artifact@v2'
+          with:
+              name: my-artifact
+
+path: ${{ github.workspace }} 
+run:	
+      mkdir -p ~/new/artifact
+      echo hello > ~/new/artifact/world.txt
+uses: actions/upload-artifact@v2
+with:	
+      name: 'Artifacts-V2'	
+      path: '~/new/**/*'
+   
+      with:	
+        name: ${{ env.name }}-name	
+        path: ${{ github.workspace }}/artifact/**/*
+- uses: actions/upload-artifact@v2
+  with:
+    name: my-artifact
+    path: |
+      path/output/bin/
+      path/output/test-results
+      !path/**/*.tmp
+
+path/to/*/directory/foo?.txt =>
+        ∟ path/to/some/directory/foo1.txt
+        ∟ path/to/some/directory/foo2.txt
+        ∟ path/to/other/directory/foo1.txt
+
+    would be flattened and uploaded as =>
+        ∟ some/directory/foo1.txt
+        ∟ some/directory/foo2.txt
+        ∟ other/directory/foo1.txt
+ - uses: actions/upload-artifact@v2
+  with:
+    name: my-artifact
+    path: path/to/artifact/   path:
+
+
+- uses: actions/upload-artifact@v2
+  if: failure()
+  with:
+    name: my-artifact
+    path: path/to/artifact/
+
+- uses: actions/upload-artifact@v2
+  with:
+    path: path/to/artifact/world.txt
+
+- run: echo hi > world.txt
+- uses: actions/upload-artifact@v2
+  with:
+    path: world.txt
+
+- run: echo howdy > extra-file.txt
+- uses: actions/upload-artifact@v2
+  with:
+    path: extra-file.txt
+
+- run: echo hello > world.txt
+- uses: actions/upload-artifact@v2
+  with:
+    path: world.txt
+
+
+Available Options:
+  warn: Output a warning but do not fail the action
+  error: Fail the action with an error message
+  ignore: Do not output any warnings or errors, the action does not fail
+
+    strategy:
+      matrix:
+          node-version: [8.x, 10.x, 12.x, 13.x]
+    steps:
+        - name: 'Create a file'
+          run: echo ${{ matrix.node-version }} > my_file.txt
+        - name: 'Accidently upload to the same artifact via multiple jobs'
+          uses: 'actions/upload-artifact@v2'
+          with:
+              name: my-artifact
+              path: ${{ github.workspace }}
+    
+        
+ uses: 'actions/upload-artifact@v2'
+          with:
+              name: my-artifact ${{ matrix.node-version }}
+              path: ${{ github.workspace }}
+
+ name: 'Tar files'
+    run: tar -cvf my_files.tar /path/to/my/directory
+
+  - name: 'Upload Artifact'
+    uses: actions/upload-artifact@v2
+    with:
+      name: my-artifact
+      path: my_files.tar  
+
+
+
+
